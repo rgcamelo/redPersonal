@@ -1,0 +1,7 @@
+<div class=" p-3 list-group list-group-flush">
+    <li class="list-group-item disabled"><i class="fas fa-user"></i> Personas que quizas conozcas</li>
+    <ng-container *ngFor="let user of users">
+        <app-card-profile (seguido)="reload($event)" [user]="user"></app-card-profile>
+    </ng-container>
+    <a routerLink="muro" routerLinkActive="active" class="nav-link link-dark list-group-item list-group-item-action "><i class="fas fa-home"></i> Home</a>
+</div>

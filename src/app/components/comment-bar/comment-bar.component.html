@@ -1,0 +1,8 @@
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="comentar()">
+    <div class="comment-input">
+        <input type="text" formControlName="comentario" class="form-control">
+        <button [disabled]="form.invalid" type="submit" class="fonts" [class.icon-blue]="form.valid">
+            <i class=" fa fa-paper-plane"></i>
+        </button>
+    </div>
+</form>

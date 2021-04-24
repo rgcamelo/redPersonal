@@ -1,0 +1,27 @@
+<div class="container newg">
+    <div class="row text-center">
+        <h3>Crear Nuevo Grupo</h3>
+    </div>
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="crearGrupo()">
+        <div class="form-group">
+            <label for="namegroup">Nombre del Grupo:</label>
+            <input type="email" class="form-control" id="namegroup" placeholder="Ingresar Nombre" formControlName="nombre">
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción del Grupo:</label>
+            <textarea class="form-control postarea" id="description" placeholder="Ingrese Descripcion" formControlName="descripcion"></textarea>
+        </div>
+        <div class="row form-group">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary">Publicar</button>
+            <button (click)="cerrarModal()" type="button" class="cancelar btn btn-outline-danger">Cancelar</button>
+        </div>
+    </form>
+
+    <div [@fadeInDownOnEnter] [@fadeOutUpOnLeave] class="alert alert-primary" role="alert" *ngIf="!getTouchedBoth()">
+        <i class="fas fa-info-circle"></i> Ingrese un nombre y una descripción para crear un nuevo grupo
+    </div>
+</div>
+
+
+
+<app-loading [loading]="load"></app-loading>

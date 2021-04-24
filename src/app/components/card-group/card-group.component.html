@@ -1,0 +1,13 @@
+<div *ngIf="group">
+    <div class="d-flex flex-row  justify-content-between border-bottom">
+        <div class="p-1 d-flex justify-content-start">
+            <img class=" mr-auto rounded-circle" [src]="group.imageUrl" width="45" height="45">
+            <div class="p-2">
+                <span class="namegroup">{{group.name}}</span>
+            </div>
+        </div>
+        <div class="p-2">
+            <button class="maxw btn btn-block btn-outline-primary"><i class="fas fa-plus-circle"></i></button>
+        </div>
+    </div>
+</div>

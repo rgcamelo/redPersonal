@@ -1,0 +1,35 @@
+<div class="form text-center">
+    <main class="form-signin">
+        <form [formGroup]="form" autocomplete="off" (ngSubmit)="submit()">
+            <img class="mb-4" src="../assets/vegetales.svg" alt="" width="72" height="57">
+            <h3>Iniciar Sesion</h3>
+            <div class="form-floating">
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com" [class.is-invalid]="emailRequired">
+                <label for="email">Correo Electronico</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password" [class.is-invalid]="passwordNoValido">
+                <label for="password">Contraseña</label>
+
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary"><i class="fa fa-check"></i></button>
+            <div class="text-center mt-3">
+                <p>¿No eres miembro? <a routerLink="/registrar-usuario">Registrate</a></p>
+            </div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+        </form>
+        <div class="alert alert-danger animate__animated animate__fadeInUp" role="alert" *ngIf="httpError">
+            {{httpErrorMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="emailNoValido">
+            Correo incorrecto
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="emailRequired">
+            Ingrese Correo Electronico
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="passwordNoValido">
+            Ingrese Contraseña
+        </div>
+    </main>
+
+</div>

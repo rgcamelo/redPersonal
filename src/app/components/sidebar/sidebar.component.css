@@ -1,0 +1,12 @@
+.list-group {
+    width: 15rem;
+}
+
+.item-sidebar :hover {
+    color: #2b5b99;
+}
+
+.item-sidebar {
+    cursor: pointer;
+    transition: color .5s;
+}

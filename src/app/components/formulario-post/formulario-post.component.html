@@ -1,0 +1,24 @@
+<div class="container newp">
+    <div class="row text-center">
+        <h3>Crear Post</h3>
+    </div>
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="publicar($event)">
+        <div class="row form-group">
+            <div class="form-floating">
+                <textarea class="form-control postarea" placeholder="¿Que estas pensando?" formControlName="comentario"></textarea>
+            </div>
+        </div>
+        <div class=" row form-group">
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Añadir una imagen</label>
+                <input class="form-control" accept=".jpg, .png" type="file" id="formFile" formControlName="image">
+            </div>
+        </div>
+        <div class="row form-group">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary">Publicar</button>
+            <button (click)="cerrarModal()" type="button" class="cancelar btn btn-outline-danger">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+<app-loading [loading]="load"></app-loading>
