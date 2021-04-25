@@ -1,8 +1,12 @@
 <div class="feed p-2">
-    <app-woym></app-woym>
-    <ng-container *ngFor="let post of posts">
-        <app-post [post]="post"></app-post>
-    </ng-container>
-
+    <div>
+        <div class="loading">
+            <app-woym></app-woym>
+            <ng-container *ngFor="let post of posts">
+                <app-post [post]="post"></app-post>
+            </ng-container>
+            <ngx-loading [show]="load" [config]="config"></ngx-loading>
+        </div>
+    </div>
     <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()"></div>
 </div>

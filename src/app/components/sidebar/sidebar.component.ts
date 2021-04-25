@@ -33,5 +33,15 @@ export class SidebarComponent implements OnInit {
       backdrop:'static',size:'md',windowClass:'modal'
     });
   }
+
+  reload(event){
+    if(event == true){
+      this.cargarGrupos();
+    }
+  }
+
+
+
+
 }
 

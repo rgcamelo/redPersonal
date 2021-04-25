@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { SearchResponseObject } from '../interfaces/searchResponse.interface';
 import { UserObject } from '../interfaces/user.interface';
 import { Follow } from '../models/follow.class';
 import { UserClassObject } from '../models/user.class';
@@ -8,6 +10,7 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class UserService {
+  sub = new Subject<any>();
 
   constructor(private http:HttpService) { }
 
@@ -25,5 +28,13 @@ export class UserService {
 
   subsUser(follow:Follow){
     return this.http.postejecutarQuery(`users/follow`,follow);
+  }
+
+  searchUser(buscar:string){
+    return this.http.ejecutarQuery<SearchResponseObject[]>(`search?text=${buscar}`);
+  }
+
+  obtenerSub(){
+    return this.sub.asObservable();
   }
 }

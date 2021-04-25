@@ -32,6 +32,8 @@ import { CardProfileComponent } from './components/card-profile/card-profile.com
 import { CardGroupComponent } from './components/card-group/card-group.component';
 import { FormularioGroupComponent } from './components/formulario-group/formulario-group.component'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { CardResultComponent } from './components/card-result/card-result.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RigthBarComponent,
     CardProfileComponent,
     CardGroupComponent,
-    FormularioGroupComponent
+    FormularioGroupComponent,
+    BusquedaComponent,
+    CardResultComponent
   ],
   imports: [
     BrowserModule,

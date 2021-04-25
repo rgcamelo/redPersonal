@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GroupObject } from '../interfaces/group.interface';
+import { FollowGroupObject } from '../models/followGroup.class';
 import { GroupClassObject } from '../models/group.class';
 import { HttpService } from './http.service';
 
@@ -19,7 +20,7 @@ export class GroupService {
     return this.http.postejecutarQuery<GroupObject>(`groups`,group);
   }
 
-  seguirGroup(seguir){
+  seguirGroup(seguir:FollowGroupObject){
     return this.http.postejecutarQuery<any>(`groups/append`,seguir);
   }
 }

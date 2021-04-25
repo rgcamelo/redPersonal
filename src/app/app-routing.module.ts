@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BoardComponent } from './components/board/board.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { FormularioUsuarioComponent } from './components/formulario-usuario/formulario-usuario.component';
 import { LoginComponent } from './components/login/login.component';
 import { MuroComponent } from './components/muro/muro.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'muro', component: MuroComponent },
       { path: 'profile/:id', component: ProfileComponent},
       { path: 'post/:id', component: OnePostComponent},
+      { path: 'buscar', component: BusquedaComponent},
     ]},
 
 ];

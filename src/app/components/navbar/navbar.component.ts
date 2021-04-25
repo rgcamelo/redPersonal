@@ -10,6 +10,7 @@ import { RedirectService } from 'src/app/service/redirect.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  buscar:string;
   user: User;
 
   constructor(private storage:StorageService,
@@ -32,5 +33,15 @@ export class NavbarComponent implements OnInit {
   irPerfil(){
     this.redirect.redirectTo(`/board/profile/${this.user.ID}`);
   }
+
+  irBusqueda(){
+    this.redirect.redirectTo(`/board/buscar?buscar=${this.buscar}`);
+  }
+
+  search(){
+    this.router.navigate(['/board/buscar'], { queryParams: { buscar: this.buscar} });
+  }
+
+
 
 }

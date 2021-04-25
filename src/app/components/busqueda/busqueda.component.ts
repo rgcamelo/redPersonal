@@ -1,33 +1,32 @@
-import { Component, OnInit, } from '@angular/core';
-import { UserObject } from 'src/app/interfaces/user.interface';
-import { RedirectService } from 'src/app/service/redirect.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SearchResponseObject } from 'src/app/interfaces/searchResponse.interface';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-rigth-bar',
-  templateUrl: './rigth-bar.component.html',
-  styleUrls: ['./rigth-bar.component.css']
+  selector: 'app-busqueda',
+  templateUrl: './busqueda.component.html',
+  styleUrls: ['./busqueda.component.css']
 })
-export class RigthBarComponent implements OnInit {
-  users:UserObject[]=[];
-
-  constructor(
-    private userService:UserService,
-    private redirect:RedirectService,
-    private storage:StorageService
-  ) { }
+export class BusquedaComponent implements OnInit {
+  resultados:SearchResponseObject[]=[];
+  constructor(private storage:StorageService,
+    private activeRoute: ActivatedRoute,
+    private userService:UserService) { }
 
   ngOnInit(): void {
     this.cargarUser();
     this.escucharEventos();
   }
-
   cargarUser(){
-    this.userService.getUsers().subscribe( res =>{
-      this.users = res;
-    });
+    const buscar = this.activeRoute.snapshot.queryParamMap.get('buscar');
+    this.userService.searchUser(buscar).subscribe(res =>{
+      this.resultados = res;
+    })
   }
+
+
 
   escucharEventos(){
     this.userService.obtenerSub().subscribe(res =>{
@@ -53,8 +52,8 @@ export class RigthBarComponent implements OnInit {
     }
   }
 
-  irMuro(){
-    this.redirect.redirectTo(`/board/muro`);
-  }
+
+
+
 
 }

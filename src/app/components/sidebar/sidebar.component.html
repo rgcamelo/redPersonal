@@ -2,9 +2,6 @@
     <button (click)="abrirModalCrearGrupo()" class="btn btn-primary round"><i class="fas fa-plus"></i><i class="fas fa-users"></i></button>
     <li class="list-group-item disabled"><i class="fas fa-users"></i> Grupos Sugeridos</li>
     <ng-container *ngFor="let grupo of gruposSugeridos">
-        <li class="list-group-item item-sidebar">
-            <app-card-group [group]="grupo"></app-card-group>
-        </li>
-
+        <app-card-group (seguido)="reload($event)" [group]="grupo"></app-card-group>
     </ng-container>
 </div>

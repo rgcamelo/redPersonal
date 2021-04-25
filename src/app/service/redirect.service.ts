@@ -12,6 +12,6 @@ export class RedirectService {
 
   public redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
+    this.router.navigateByUrl(uri));
  }
 }

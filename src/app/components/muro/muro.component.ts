@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import { Post } from 'src/app/interfaces/post.interface';
 import { PostService } from '../../service/post.service';
+import { StorageService } from 'src/app/service/storage.service';
+
 
 @Component({
   selector: 'app-muro',
@@ -9,9 +12,18 @@ import { PostService } from '../../service/post.service';
 })
 export class MuroComponent implements OnInit {
 
-  constructor(private postService:PostService) { }
+  config= {
+    animationType: ngxLoadingAnimationTypes.circleSwish,
+    primaryColour: '#2b5b99',
+    backdropBorderRadius: '3px',
+    backdropBackgroundColour: 'transparent'
+  }
+
+  constructor(private postService:PostService,
+    private storage:StorageService) { }
 
   posts:Post[] = [];
+  load=false;
   next;
 
   ngOnInit(): void {
@@ -21,6 +33,7 @@ export class MuroComponent implements OnInit {
 
   cargarPost(url?:string){
     this.postService.getPosts(url).subscribe( res =>{
+      this.load = false;
       if(res){
         this.next = res.next;
         this.posts.push(...res.results);
@@ -47,19 +60,57 @@ export class MuroComponent implements OnInit {
           case 'new::post':
             this.nuevoPost(res);
             break;
+          case 'new::subuser':
+            this.nuevoUsuarioSeguido(res);
+            break;
+          case 'new::subgroup':
+            this.nuevoGrupoSeguido(res);
+            break;
         }
       }
     });
   }
 
   nuevoPost(res){
-    if(this.posts){
-      this.posts.unshift(res.post);
-    }else{
-      this.posts = [...res.post]
+    const id=this.storage.obtenerUsuario().ID;
+    if(res.post.user_id === id ){
+      if(this.posts){
+        this.posts.unshift(res.post);
+      }else{
+        this.posts = [...res.post]
+      }
     }
-    console.log(this.posts);
   }
+
+  nuevoUsuarioSeguido(res){
+    const id=this.storage.obtenerUsuario().ID;
+    if(res.user_id === id){
+      // Yo siguiendo
+      this.load = true
+      this.cargarPost();
+    }
+
+    if(res.followed_id ===id){
+      //me siguieron
+
+    }
+  }
+
+  nuevoGrupoSeguido(res){
+    const id=this.storage.obtenerUsuario().ID;
+    if(res.user_id === id){
+      // Yo siguiendo
+      this.load = true
+      this.cargarPost();
+    }
+  }
+
+
+
+
+
+
+
 
 
 }
