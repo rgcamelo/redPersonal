@@ -34,6 +34,13 @@ import { FormularioGroupComponent } from './components/formulario-group/formular
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { CardResultComponent } from './components/card-result/card-result.component';
+import { GuardianLoginService } from './service/guardian-login.service';
+
+import { registerLocaleData } from '@angular/common';
+import localeEsCO from '@angular/common/locales/es-CO';
+import { LOCALE_ID } from '@angular/core';
+
+registerLocaleData(localeEsCO, 'es-Co');
 
 @NgModule({
   declarations: [
@@ -73,7 +80,9 @@ import { CardResultComponent } from './components/card-result/card-result.compon
     InfiniteScrollModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}
+    GuardianLoginService,
+    {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
+    { provide: LOCALE_ID, useValue: 'es-Co' }
   ],
   bootstrap: [AppComponent]
 })

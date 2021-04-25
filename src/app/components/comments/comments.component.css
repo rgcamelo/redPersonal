@@ -47,3 +47,7 @@
     outline: 0;
     box-shadow: none
 }
+
+.time {
+    font-size: 9px !important
+}

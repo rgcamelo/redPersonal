@@ -1,6 +1,11 @@
 <div class="form">
     <main class="form-signup">
         <form autocomplete="off" [formGroup]="form" (ngSubmit)="registrar()">
+            <div class="text-center">
+                <img class="mb-4" src="../assets/cubos.svg" alt="" width="250" height="100">
+                <h3 class="mb-2 ">Crea una cuenta</h3>
+            </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nombre</label>
                 <input formControlName="nombre" type="text" class="form-control" aria-describedby="nameHelp" [class.is-invalid]="nameMinLength">

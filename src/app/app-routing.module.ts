@@ -7,11 +7,12 @@ import { LoginComponent } from './components/login/login.component';
 import { MuroComponent } from './components/muro/muro.component';
 import { OnePostComponent } from './components/one-post/one-post.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GuardianLoginService } from './service/guardian-login.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'registrar-usuario', component: FormularioUsuarioComponent},
-  { path: 'board', component: BoardComponent,
+  { path: 'board', component: BoardComponent, canActivate: [GuardianLoginService],
     children:[
       { path: '', redirectTo: 'muro', pathMatch: 'full' },
       { path: 'muro', component: MuroComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'post/:id', component: OnePostComponent},
       { path: 'buscar', component: BusquedaComponent},
     ]},
+  { path: '**', redirectTo: 'board' },
 
 ];
 
