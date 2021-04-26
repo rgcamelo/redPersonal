@@ -76,7 +76,7 @@ export class PostComponent implements OnInit {
       }
       const id = this.storage.obtenerUsuario().ID;
       const reaction = this.post.reactions.find( rea =>{
-        return rea.user_id === id;
+        return rea.user_id === id || rea.user_id === res.reaction.user_id;
       })
 
       if(reaction){

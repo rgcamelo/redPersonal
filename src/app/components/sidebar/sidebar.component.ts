@@ -24,7 +24,6 @@ export class SidebarComponent implements OnInit {
   cargarGrupos(){
     this.groups.getGroups().subscribe( res =>{
       this.gruposSugeridos = res;
-      console.log(res);
     })
   }
 

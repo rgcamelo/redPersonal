@@ -6,7 +6,8 @@
                 <app-post [post]="post"></app-post>
             </ng-container>
             <ngx-loading [show]="load" [config]="config"></ngx-loading>
+            <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()"></div>
+
         </div>
     </div>
-    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()"></div>
 </div>

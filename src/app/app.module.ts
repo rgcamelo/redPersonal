@@ -39,6 +39,8 @@ import { GuardianLoginService } from './service/guardian-login.service';
 import { registerLocaleData } from '@angular/common';
 import localeEsCO from '@angular/common/locales/es-CO';
 import { LOCALE_ID } from '@angular/core';
+import { CardMembersComponent } from './components/card-members/card-members.component';
+import { NgxNotifierModule } from 'ngx-notifier';
 
 registerLocaleData(localeEsCO, 'es-Co');
 
@@ -64,7 +66,8 @@ registerLocaleData(localeEsCO, 'es-Co');
     CardGroupComponent,
     FormularioGroupComponent,
     BusquedaComponent,
-    CardResultComponent
+    CardResultComponent,
+    CardMembersComponent
   ],
   imports: [
     BrowserModule,
@@ -77,12 +80,13 @@ registerLocaleData(localeEsCO, 'es-Co');
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     NgxLoadingModule.forRoot({}),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgxNotifierModule
   ],
   providers: [
     GuardianLoginService,
     {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
-    { provide: LOCALE_ID, useValue: 'es-Co' }
+    { provide: LOCALE_ID, useValue: 'es-Co' },
   ],
   bootstrap: [AppComponent]
 })

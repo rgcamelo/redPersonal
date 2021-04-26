@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { NotifyServiceService } from './notify-service.service';
 import { PostService } from './post.service';
 import { UserService } from './user.service';
 
@@ -12,6 +13,7 @@ export class SocketService {
   constructor(
     private postService:PostService,
     private userService:UserService,
+    private notifyService:NotifyServiceService,
   ) {
     this.socket = new WebSocket(`ws://18.189.21.84:5050/ws`)
 
@@ -33,8 +35,7 @@ export class SocketService {
       // }
       this.postService.sub.next(data);
       this.userService.sub.next(data);
-      console.log('Nuevo mensaje');
-      console.log(JSON.parse(evt.data))
+      this.notifyService.sub.next(data);
     }
   }
 

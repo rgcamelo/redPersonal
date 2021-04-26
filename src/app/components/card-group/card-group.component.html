@@ -1,13 +1,26 @@
 <div *ngIf="group">
-    <div class="d-flex flex-row justify-content-between border-bottom">
+    <div class="d-flex flex-row justify-content-between border-bottom ">
         <div class="p-1 d-flex justify-content-start">
             <img class="rounded-circle" [src]="group.imageUrl" width="45" height="45">
-            <div class="p-2">
+            <div class="maxw p-2">
                 <span class="namegroup">{{group.name}}</span>
             </div>
         </div>
         <div class="p-2">
-            <button (click)="seguirGrupo()" class="btn btn-block btn-outline-primary"><i class="fas fa-plus-circle"></i></button>
+            <div class="btn-group dropright">
+                <button (click)="seguirGrupo()" class="btn btn-block btn-outline-primary"><i class="fas fa-plus-circle"></i></button>
+
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropright</span>
+            </button>
+                <div class="dropdown-menu w">
+                    <ul class=" list-group sticky">
+                        <ng-container *ngFor="let user of group.users">
+                            <app-card-members [user]="user"></app-card-members>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

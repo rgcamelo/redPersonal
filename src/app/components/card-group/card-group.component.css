@@ -1,3 +1,20 @@
 .namegroup {
     font-size: 12px;
 }
+
+.maxw {
+    width: 80px;
+    word-wrap: break-word;
+}
+
+.w {
+    width: 15rem;
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: static;
+    top: 10px;
+}

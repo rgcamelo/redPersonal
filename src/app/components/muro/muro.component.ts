@@ -37,7 +37,6 @@ export class MuroComponent implements OnInit {
       if(res){
         this.next = res.next;
         this.posts.push(...res.results);
-        console.log(this.posts);
       }
     })
   }

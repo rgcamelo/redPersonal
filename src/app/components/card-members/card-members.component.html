@@ -1,13 +1,10 @@
 <div *ngIf="user">
-    <div class="d-flex flex-row  justify-content-between border-bottom animate__animated animate__fadeIn animate__faster">
+    <div class="d-flex flex-row  justify-content-between border-bottom">
         <div (click)="irPerfil()" class="p-1 d-flex justify-content-start">
             <img class="mr-auto rounded-circle" [src]="user.avatar" width="45" height="45">
             <div class="p-2">
                 <span>{{user.name}}</span>
             </div>
-        </div>
-        <div class="p-2">
-            <button (click)="seguir()" class=" maxw btn btn-block btn-outline-primary"><i class="fas fa-user-plus"></i></button>
         </div>
     </div>
 
